@@ -4,7 +4,6 @@ const mongoose = require('mongoose');
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-const { User, Thought, Reaction } = require('./models');
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -18,53 +17,6 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/Notedb', {
 mongoose.set('useCreateIndex', true);
 mongoose.set('debug', true);
 
-app.post('/submit', ({ body }, res) => {
-  User.create(body)
-    .then(dbNote => {
-      res.json(dbNote);
-    })
-    .catch(err => {
-      res.json(err);
-    });
-});
-
-app.get('/all', (req, res) => {
-  User.find({})
-    .then(dbNote => {
-      res.json(dbNote);
-    })
-    .catch(err => {
-      res.json(err);
-    });
-});
-
-app.post('/update/:id', ({ params, body }, res) => {
-  Note.findOneAndUpdate({ _id: params.id }, body, { new: true })
-    .then(dbNote => {
-      if (!dbNote) {
-        res.json({ message: 'No user found with this id!' });
-        return;
-      }
-      res.json(dbNote);
-    })
-    .catch(err => {
-      res.json(err);
-    });
-});
-
-app.delete('/delete/:id', ({ params }, res) => {
-  User.findOneAndDelete({ _id: params.id })
-    .then(dbNote => {
-      if (!dbNote) {
-        res.json({ message: 'No note found with this id!' });
-        return;
-      }
-      res.json(dbNote);
-    })
-    .catch(err => {
-      res.json(err);
-    });
-});
 
 app.listen(PORT, () => {
   console.log(`App running on port ${PORT}!`);
