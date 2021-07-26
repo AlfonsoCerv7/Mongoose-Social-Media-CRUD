@@ -12,7 +12,7 @@ In this demo video and code, I showcase a sample mongoose database and its CRUD 
 ## Installation
 To install dependencies, run the following:
 `
-The commands to run the demo code will be showcased in a video.
+The commands to run the demo code will be showcased in a video. This video: https://drive.google.com/file/d/1cXH2jxsUKgStB9KBqVgHKOS1PfDhThmK/view
 `
 ## Usage
 Just follow this video link to see the repo in action! 

@@ -14,13 +14,9 @@ const UserSchema = new Schema({
   email: {
     type: String,
     validate: {
-      validator: () => Promise.resolve(false),
+      validator: () => Promise.resolve(true),
       message: 'Email validation failed'
     },
-    trim: true,
-    unique: true,
-    required: 'Password is Required',
-    minlength: 6
   },
 
   createdAt: {
@@ -67,7 +63,7 @@ const ThoughtSchema = new Schema({
         virtuals: true,
         getters: true
     },
-    id: false
+    id: true
 
 });
 
